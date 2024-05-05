@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Field Effects</title>
+<style>
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+        border-color: blue;
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+    }
+</style>
+</head>
+<body>
+
+<label for="textField">Enter your text:</label>
+<input type="text" id="textField">
+
+<script>
+    // Get the text field element by its id
+    let textField = document.getElementById("textField");
+
+    // Add event listeners for different events
+    textField.onchange = function() {
+        this.style.backgroundColor = "yellow";
+    };
+
+    textField.onfocus = function() {
+        this.style.border = "2px solid green";
+    };
+
+    textField.onblur = function() {
+        this.style.border = "1px solid #ccc";
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Move Squares Animation</title>
+<style>
+  #container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+  }
+
+  .square {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transition: all 0.5s ease;
+  }
+
+  #startBtn, #stopBtn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div class="square" id="square1" style="top: 50px; left: 50px;"></div>
+  <div class="square" id="square2" style="top: 200px; left: 200px;"></div>
+</div>
+
+<button id="startBtn">Start Animation</button>
+<button id="stopBtn">Stop Animation</button>
+
+<script>
+  let square1 = document.getElementById("square1");
+  let square2 = document.getElementById("square2");
+  let container = document.getElementById("container");
+  let animationInterval;
+
+  document.getElementById("startBtn").addEventListener("click", startAnimation);
+  document.getElementById("stopBtn").addEventListener("click", stopAnimation);
+
+  function startAnimation() {
+    animationInterval = setInterval(moveSquares, 1000);
+  }
+
+  function stopAnimation() {
+    clearInterval(animationInterval);
+  }
+
+  function moveSquares() {
+    let maxX = container.offsetWidth - square1.offsetWidth;
+    let maxY = container.offsetHeight - square1.offsetHeight;
+    let randomX1 = Math.floor(Math.random() * maxX);
+    let randomY1 = Math.floor(Math.random() * maxY);
+    let randomX2 = Math.floor(Math.random() * maxX);
+    let randomY2 = Math.floor(Math.random() * maxY);
+
+    square1.style.left = randomX1 + "px";
+    square1.style.top = randomY1 + "px";
+    square2.style.left = randomX2 + "px";
+    square2.style.top = randomY2 + "px";
+  }
+</script>
+
+</body>
+</html>

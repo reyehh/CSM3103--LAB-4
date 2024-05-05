@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table Manipulation</title>
+<style>
+  /* CSS style for blue color and underline for email */
+  .blue-email {
+    color: blue;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<table id="myTable" border="1">
+  <!-- Table header will be added dynamically -->
+</table>
+
+<script>
+  // Function to add a new row to the table
+  function addRow(name, email, phone) {
+    let table = document.getElementById("myTable");
+    let newRow = table.insertRow(-1); // Insert new row at the end (-1)
+    let cell1 = newRow.insertCell(0);
+    let cell2 = newRow.insertCell(1);
+    let cell3 = newRow.insertCell(2);
+    let cell4 = newRow.insertCell(3);
+    cell1.innerHTML = table.rows.length - 1; // Auto-increment for #
+    cell2.innerHTML = name;
+    cell3.innerHTML = `<span class="blue-email">${email}</span>`; // Email with blue color and underline
+    cell4.innerHTML = phone;
+
+    // Add event listener to delete row when clicked
+    newRow.addEventListener("click", function() {
+      table.deleteRow(newRow.rowIndex);
+    });
+  }
+
+  // Function to add table header dynamically
+  function addTableHeader() {
+    let table = document.getElementById("myTable");
+    let headerRow = table.insertRow(0); // Insert at the beginning (index 0)
+    let headers = ["#", "Name", "Email", "Phone #"];
+    for (let i = 0; i < headers.length; i++) {
+      let headerCell = headerRow.insertCell(i);
+      headerCell.innerHTML = headers[i];
+    }
+  }
+
+  // Add the new record and table header
+  addRow("Ahmad Faisal", "ahmadfaisal@gmail.com", "0199088888");
+  addRow("Ismail Sabri", "isabri@mail.com", "0199076760");
+  addRow("Fateh Yakin", "ffateh@hotmail.com", "0176067762");
+  addRow("Mukhriz Jamil Asoka", "mukriz@corp.jo", "651181187223");
+
+  addTableHeader();
+</script>
+
+</body>
+</html>
